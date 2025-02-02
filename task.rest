@@ -1,0 +1,31 @@
+// Archivo 1: tasks.http
+### Get all tasks
+GET http://localhost:3000/tasks
+
+### Get task by ID
+GET http://localhost:3000/tasks/63d5e7b1f9d5b5bc12f3b0c2
+
+### POST - create task
+POST http://localhost:3000/tasks HTTP/1.1
+content-type: application/json
+
+{
+    "title": "romero",
+    "description": "Complete API development",
+    "status": "Pending",
+    "assignedUser": "679018f6be2c5a72e7e3e87b"
+}
+
+### PUT - update task
+PUT http://localhost:3000/tasks/679f9adf8d99c21bd68fddac HTTP/1.1
+content-type: application/json
+
+{
+    "title": "vergara",
+    "description": "Refactor API endpoints",
+    "status": "In Progress",
+    "assignedUser": "679018f6be2c5a72e7e3e87b"
+}
+
+### DELETE task
+DELETE http://localhost:3000/tasks/67903d741666c20fb2ccf443 HTTP/1.1
