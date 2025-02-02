@@ -5,10 +5,10 @@
     "description": "API for managing cinema Rommero",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "https://project3-cse-341.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {

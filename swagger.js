@@ -5,10 +5,10 @@ const doc = {
     title: "Users API",
     description: "API for managing cinema Rommero"
   },
-  host: "localhost:3000", // o la URL de tu servidor
-  schemes: ["http"]
-  //host: 'https://project2-p1-cse341.onrender.com', // URL pública de tu servidor en producción
-  //schemes: ["https"], // Usar HTTPS en producción
+ // host: "localhost:3000", // o la URL de tu servidor
+ // schemes: ["http"]
+  host: 'https://project3-cse-341.onrender.com', // URL pública de tu servidor en producción
+  schemes: ["https"], // Usar HTTPS en producción
 };
 
 const outputFile = "./swagger.json"; // El archivo Swagger generado
