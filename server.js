@@ -1,17 +1,15 @@
 const express = require('express');
-const port = process.env.PORT || 3000;
-var logger = require('morgan');
+const logger = require('morgan');
 const bodyParser = require('body-parser');
-const mongodb = require('./data/database');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json'); // Archivo de configuración de Swagger
+const mongodb = require('./data/database');
 
 const app = express();
+const port = process.env.PORT || 3000;
 
-app
-  .use(bodyParser.json())
-  .use(logger('dev'))
-  .use((req, res, next) => {
+// Configuración de CORS manual
+app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
       'Access-Control-Allow-Headers',
@@ -22,16 +20,23 @@ app
       'GET, POST, PATCH, PUT, DELETE, OPTIONS'
     );
     next();
-  })
-  .use('/', require('./routes'))
-  .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument)); // Ruta para la documentación
+});
 
+// Middlewares
+app
+  .use(bodyParser.json())
+  .use(logger('dev'))
+  .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument)) // Documentación Swagger
+  .use('/', require('./routes'));
+
+// Conexión a la base de datos y inicio del servidor
 mongodb.initDb((err) => {
   if (err) {
-    console.log(err);
+    console.log('Error al conectar a la base de datos:', err);
   } else {
-    app.listen(port);
-    console.log(`Connected to DB and listening on ${port}`);
-    console.log(`API Docs available at http://localhost:${port}/api-docs`);
+    app.listen(port, () => {
+      console.log(`Servidor corriendo en http://localhost:${port}`);
+      console.log(`Documentación disponible en http://localhost:${port}/api-docs`);
+    });
   }
 });
