@@ -1,23 +1,23 @@
 / Local Host
 ### Get all collaborations
-GET http://localhost:3000/Collaborations
+GET https://project3-cse-341.onrender.com/Collaborations
 
 ### Get collaboration by ID
-GET http://localhost:3000/Collaborations/63d5e9a0f9d5b5bc12f3b0d7
+GET https://project3-cse-341.onrender.com/Collaborations/63d5e9a0f9d5b5bc12f3b0d7
 
 ### POST - Create collaboration
-POST http://localhost:3000/Collaborations HTTP/1.1
+POST https://project3-cse-341.onrender.com/Collaborations HTTP/1.1
 content-type: application/json
 
 {
     "projectId": "679018f6be2c5a72e7e3e87b",
     "userId": "67903d741666c20fb2ccf443",
-    "role": "",
+    "role": "Romero",
     "joinedAt": "2025-02-02T14:00:00.000Z"
 }
 
 ### PUT - Update collaboration
-PUT http://localhost:3000/collaboration/67903d741666c20fb2ccf443 HTTP/1.1
+PUT https://project3-cse-341.onrender.com/collaboration/67903d741666c20fb2ccf443 HTTP/1.1
 content-type: application/json
 
 {
@@ -26,4 +26,4 @@ content-type: application/json
 }
 
 ### DELETE collaboration
-DELETE http://localhost:3000/collaboration/67903d741666c20fb2ccf443 HTTP/1.1
+DELETE https://project3-cse-341.onrender.com/collaboration/63d5e9a0f9d5b5bc12f3b0d7 HTTP/1.1

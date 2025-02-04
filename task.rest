@@ -1,12 +1,12 @@
 // Archivo 1: tasks.http
 ### Get all tasks
-GET http://localhost:3000/tasks
+GET https://project3-cse-341.onrender.com/tasks
 
 ### Get task by ID
-GET http://localhost:3000/tasks/63d5e7b1f9d5b5bc12f3b0c2
+GET https://project3-cse-341.onrender.com/tasks/63d5e7b1f9d5b5bc12f3b0c2
 
 ### POST - create task
-POST http://localhost:3000/tasks HTTP/1.1
+POST https://project3-cse-341.onrender.com/tasks HTTP/1.1
 content-type: application/json
 
 {
@@ -17,7 +17,7 @@ content-type: application/json
 }
 
 ### PUT - update task
-PUT http://localhost:3000/tasks/679f9adf8d99c21bd68fddac HTTP/1.1
+PUT https://project3-cse-341.onrender.com/tasks/679f9adf8d99c21bd68fddac HTTP/1.1
 content-type: application/json
 
 {
@@ -28,4 +28,4 @@ content-type: application/json
 }
 
 ### DELETE task
-DELETE http://localhost:3000/tasks/67903d741666c20fb2ccf443 HTTP/1.1
+DELETE https://project3-cse-341.onrender.com/tasks/67903d741666c20fb2ccf443 HTTP/1.1

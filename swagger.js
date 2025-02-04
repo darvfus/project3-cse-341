@@ -7,7 +7,7 @@ const doc = {
   },
  // host: "localhost:3000", // o la URL de tu servidor
  // schemes: ["http"]
-  host: 'https://project3-cse-341.onrender.com', // URL pública de tu servidor en producción
+  host: 'project3-cse-341.onrender.com', // URL pública de tu servidor en producción
   schemes: ["https"], // Usar HTTPS en producción
 };
 

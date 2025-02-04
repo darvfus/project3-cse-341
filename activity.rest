@@ -1,22 +1,28 @@
 // Local Host
 ### Get all activity logs
-GET http://localhost:3000/activitylogs
+GET https://project3-cse-341.onrender.com/activitylogs
 
 ### Get activity log by ID
-GET http://localhost:3000/activitylogs/67903d741666c20fb2ccf443
+GET https://project3-cse-341.onrender.com/activitylogs/63d5ea08f9d5b5bc12f3b0e1
 
 ### POST - Create activity log
-POST http://localhost:3000/activitylogs HTTP/1.1
+POST https://project3-cse-341.onrender.com/activitylogs HTTP/1.1
 content-type: application/json
 
 {
-    "action": "User logged in",
-    "userId": "679018f6be2c5a72e7e3e87b",
-    "timestamp": "2025-02-02T12:00:00.000Z"
-}
+    "_id": "63d5ea08f9d5b5bc12f3b0e1",
+    "userId": "johndd",
+    "action": "created task romero",
+    "details": "Created 'Complete project report'.",
+    "target": "task123",
+    "timestamp": 1674979200,
+    "ipAddress": "192.168.1.1",
+    "status": "success",
+    "location": "New York"
+}  
 
 ### PUT - Update activity log
-PUT http://localhost:3000/activitylogs/67903d741666c20fb2ccf443 HTTP/1.1
+PUT https://project3-cse-341.onrender.com/activitylogs/67903d741666c20fb2ccf443 HTTP/1.1
 content-type: application/json
 
 {
@@ -26,4 +32,4 @@ content-type: application/json
 }
 
 ### DELETE activity log
-DELETE http://localhost:3000/activitylogs/67903d741666c20fb2ccf443 HTTP/1.1
+DELETE https://project3-cse-341.onrender.com/activitylogs/67903d741666c20fb2ccf443 HTTP/1.1
