@@ -10,14 +10,17 @@ POST https://project3-cse-341.onrender.com/tasks HTTP/1.1
 content-type: application/json
 
 {
-    "title": "romero",
-    "description": "Complete API development",
-    "status": "Pending",
-    "assignedUser": "679018f6be2c5a72e7e3e87b"
+   "title": "Daniel",
+  "description": "Resolve issue with login button not working.",
+  "status": "",
+  "assignedUser": "janedoe",
+  "priority": "medium",
+  "deadline": 1675737600,
+  "createdAt": 1674883200
 }
 
 ### PUT - update task
-PUT https://project3-cse-341.onrender.com/tasks/679f9adf8d99c21bd68fddac HTTP/1.1
+PUT https://project3-cse-341.onrender.com/tasks/63d5e7b1f9d5b5bc12f3b0c2 HTTP/1.1
 content-type: application/json
 
 {
@@ -28,4 +31,4 @@ content-type: application/json
 }
 
 ### DELETE task
-DELETE https://project3-cse-341.onrender.com/tasks/67903d741666c20fb2ccf443 HTTP/1.1
+DELETE https://project3-cse-341.onrender.com/tasks/63d5e7b1f9d5b5bc12f3b0c2 HTTP/1.1

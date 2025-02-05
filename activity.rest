@@ -10,8 +10,8 @@ POST https://project3-cse-341.onrender.com/activitylogs HTTP/1.1
 content-type: application/json
 
 {
-    "_id": "63d5ea08f9d5b5bc12f3b0e1",
-    "userId": "johndd",
+   
+    "userId": "johnh",
     "action": "created task romero",
     "details": "Created 'Complete project report'.",
     "target": "task123",
@@ -32,4 +32,4 @@ content-type: application/json
 }
 
 ### DELETE activity log
-DELETE https://project3-cse-341.onrender.com/activitylogs/67903d741666c20fb2ccf443 HTTP/1.1
+DELETE https://project3-cse-341.onrender.com/activitylogs/63d5ea08f9d5b5bc12f3b0e1 HTTP/1.1

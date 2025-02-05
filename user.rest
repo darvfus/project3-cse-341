@@ -9,10 +9,16 @@ POST https://project3-cse-341.onrender.com/users HTTP/1.1
 content-type: application/json
 
 {
-    "username": "",
-    "email": "john@example.com",
-    "password": "securepass",
-    "roles": ["admin"]
+     "username": "Daniel",
+  "hashedPassword": "hashedpassword456",
+  "email": "janedoe@example.com",
+  "roles": [
+    "user"
+  ],
+  "fullName": "Jane Doe",
+  "profilePicture": "profile456.jpg",
+  "status": "inactive",
+  "createdAt": 1674144000
 }
 
 ### PUT - update user
