@@ -2,6 +2,7 @@ const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 const User = require('../models/User');
 
+
 // Obtener todos los usuarios
 const getAll = async (req, res) => {
   try {
@@ -35,6 +36,7 @@ const getSingle = async (req, res) => {
 
 // Crear un nuevo usuario
 const createUser = async (req, res) => {
+  console.log('Request Body:', req.body); // Depuración
   const { username, email, password, roles } = req.body;
 
   if (typeof username !== 'string' || typeof email !== 'string' || typeof password !== 'string') {
@@ -65,6 +67,7 @@ const createUser = async (req, res) => {
 
 // Actualizar un usuario
 const updateUser = async (req, res) => {
+  console.log('Request Body:', req.body); // Depuración
   const { username, email, password, roles } = req.body;
   const userId = req.params.id;
 
@@ -98,18 +101,17 @@ const updateUser = async (req, res) => {
   }
 };
 
-// Eliminar un usuario
 const deleteUser = async (req, res) => {
-  try {
-    const userId = req.params.id;
-    if (!ObjectId.isValid(userId)) {
-      return res.status(400).json({ message: 'Invalid user ID' });
-    }
+  const userId = req.params.id;
+  if (!ObjectId.isValid(userId)) {
+    return res.status(400).json({ message: 'Invalid user ID' });
+  }
 
+  try {
     const response = await mongodb.getDb().db().collection('users').deleteOne({ _id: new ObjectId(userId) });
 
     if (response.deletedCount > 0) {
-      res.status(200).json({ message: 'Deleted user successfully.' });
+      res.status(200).json({ message: 'User deleted successfully' });
     } else {
       res.status(404).json({ message: 'User not found' });
     }
@@ -123,5 +125,5 @@ module.exports = {
   getSingle,
   createUser,
   updateUser,
-  deleteUser,
+  deleteUser
 };

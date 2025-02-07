@@ -1,7 +1,6 @@
 const express = require('express');
 const port = process.env.PORT || 3000;
 const logger = require('morgan');
-const bodyParser = require('body-parser');
 const mongodb = require('./data/database');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
@@ -19,7 +18,8 @@ const app = express();
 // Middlewares
 app
   .use(logger('dev'))
-  .use(bodyParser.json())
+  .use(express.json()) // Reemplazo de body-parser
+  .use(express.urlencoded({ extended: true })) // Para recibir datos de formularios
   .use(
     session({
       secret: 'secret',
@@ -27,19 +27,7 @@ app
       saveUninitialized: true,
     })
   )
-  .use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader(
-      'Access-Control-Allow-Headers',
-      'Origin, X-Requested-With, Content-Type, Accept'
-    );
-    res.setHeader(
-      'Access-Control-Allow-Methods',
-      'GET, POST, PATCH, PUT, DELETE, OPTIONS'
-    );
-    next();
-  })
-  .use(cors()) // Configuración simplificada de CORS
+  .use(cors({ origin: '*', methods: ['GET', 'POST', 'PUT', 'DELETE'] })) // Configuración CORS
   .use(passport.initialize())
   .use(passport.session())
   .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
@@ -54,31 +42,28 @@ passport.use(
       callbackURL: process.env.GITHUB_URL,
     },
     function (accessToken, refreshToken, profile, done) {
-      return done(null, profile); // Pasa el perfil completo
+      return done(null, profile);
     }
   )
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user); // Guarda el perfil en la sesión
+  done(null, user);
 });
 
 passport.deserializeUser((user, done) => {
-  done(null, user); // Recupera el perfil de la sesión
+  done(null, user);
 });
 
 // Rutas de autenticación
-app.get(
-  '/login',
-  passport.authenticate('github', { scope: ['user:email'] })
-);
+app.get('/login', passport.authenticate('github', { scope: ['user:email'] }));
 
 app.get(
   '/github/callback',
   passport.authenticate('github', { failureRedirect: '/api-docs' }),
   (req, res) => {
-    req.session.user = req.user; // Guarda el perfil en la sesión
-    res.redirect('/'); // Redirige a la página principal
+    req.session.user = req.user;
+    res.redirect('/');
   }
 );
 
@@ -87,7 +72,7 @@ app.get('/logout', (req, res, next) => {
     if (err) {
       return next(err);
     }
-    req.session.destroy(); // Destruye la sesión
+    req.session.destroy();
     res.redirect('/');
   });
 });

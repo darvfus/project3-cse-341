@@ -10,7 +10,7 @@ router.get('/', activityLogsController.getAll); // Obtener todos los logs de act
 router.get('/:id', activityLogsController.getSingle); // Obtener un log de actividad por ID
 
 router.post('/',isAuthenticated, activityLogsController.createActivityLog); // Crear un nuevo log de actividad
-router.put('/:id', activityLogsController.updateActivityLog); // Actualizar un log de actividad existente
-router.delete('/:id', activityLogsController.deleteActivityLog); // Eliminar un log de actividad por ID
+router.put('/:id',isAuthenticated, activityLogsController.updateActivityLog); // Actualizar un log de actividad existente
+router.delete('/:id',isAuthenticated, activityLogsController.deleteActivityLog); // Eliminar un log de actividad por ID
 
 module.exports = router;
